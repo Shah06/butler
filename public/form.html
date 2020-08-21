@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HttpServer</title>
+	</head>
+	<body>
+		<h1>HttpServer Test page</h1>
+		<h3>Test POST application</h3>
+		<p id="postResponse"></p>
+		<button onclick="createPost();">Click me</button>
+		<p>It works. &copy; Atharva Shah 2020</p>
+		<script>
+
+			function makeid(length) {
+				var result           = '';
+				var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+				var charactersLength = characters.length;
+				for ( var i = 0; i < length; i++ ) {
+					result += characters.charAt(Math.floor(Math.random() * charactersLength));
+				}
+				return result;
+			}
+			
+			function createPost() {
+				let req = new XMLHttpRequest();
+				req.open("POST", "./post_endpoint", true);
+				req.onreadystatechange = function() {
+					console.log("readyState: " + this.readyState + " status: " + this.status)
+					if (4==this.readyState && 200==this.status) {
+						console.log("responseText: " + this.responseText)
+						document.getElementById("postResponse").innerHTML = this.responseText;
+					}
+				}
+				req.send("data:" + makeid(12));
+			}
+
+		</script>
+		<!-- <form action="./form.html" method="post">
+		  <label for="fname">First name:</label><br>
+		  <input type="text" id="fname" name="fname" value="John"><br>
+		  <label for="lname">Last name:</label><br>
+		  <input type="text" id="lname" name="lname" value="Doe"><br><br>
+		  <input type="submit" value="Submit">
+		</form> -->
+	</body>
+</html>
