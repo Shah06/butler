@@ -1,14 +1,36 @@
 # Butler
 ##### *1.0-SNAPSHOT*
 
-Butler is a pseudo-http server used for writing full-stack web applications in Java, with NodeJS inspired syntax.
+Butler is a pseudo-http server used for writing full-stack web applications in Java, with NodeJS inspired syntax. Note that you will need Log4j2 in order to see output messages.
 
 ### Roadmap
 1. Add SQL API
 2. Static file caching
 3. Less code to get started (perhaps have one single instantiator class)
 
-### Example class
+### Simple use case
+The following is a VERY simple use-case of butler:
+```
+import org.atharvashah.butler.*;
+
+public class Main {
+	
+	public static void main(String[] args) {
+		
+		RequestHandlerManager manager = RequestHandlerManager.getInstance();
+		
+		manager.get("*", (req, res) -> {
+			res.write("HTTP/1.1 200 OK\n\n It works!");
+		});
+		
+		new HttpServer();
+		
+	}
+
+}
+```
+
+### Intermediate use case
 The following is a basic, yet full featured web application. It sets up a file server at a directory, keeps track of page visits, and has a database-esque application which keeps an array of names entered through a form (via POST).
 
 

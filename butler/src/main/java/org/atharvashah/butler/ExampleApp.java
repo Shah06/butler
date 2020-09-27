@@ -15,9 +15,9 @@ import org.atharvashah.butler.utils.properties.PropertiesManager;
 import org.atharvashah.butler.utils.requests.RequestHandlerManager;
 
 /**
- * Hello world!
+ * The following is an example application.
  */
-public final class App {
+public final class ExampleApp {
 
     static int pageVisit = 0;
     static ArrayList<String> names = new ArrayList<String>();
@@ -26,7 +26,7 @@ public final class App {
         if (null == PUBLIC_FILEPATH) PUBLIC_FILEPATH = "public/";
     }
 
-    private App() {
+    private ExampleApp() {
     }
 
     /**
